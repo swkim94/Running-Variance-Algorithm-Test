@@ -12,7 +12,7 @@ def var2(n):      # this was the fastest but bad for big numbers with small vari
     E_n_sq = n_sq_sum/n.size
     return E_n_sq - avg**2
 
-def rs1(n):  # single pass, running statatistics version (Welford algorithm), was much slower but uses less memory, will have advantage for big data or stream of data. Wikipedia says "These formulas suffer from numerical instability." Why?
+def rs1(n):  # single pass, running statistics version (Welford algorithm), was much slower but uses less memory, will have advantage for big data or stream of data. Wikipedia says "These formulas suffer from numerical instability." Why?
     k = 1
     M = n[0]
     S = 0
@@ -24,7 +24,7 @@ def rs1(n):  # single pass, running statatistics version (Welford algorithm), wa
     var = S / (k - 1)
     return M, var
 
-def rs2(n):  # single pass, running statatistics version (Welford algorithm)
+def rs2(n):  # single pass, running statistics version (Welford algorithm)
     M = n[0]
     S = 0
     for k in range(1,n.size):
@@ -35,7 +35,7 @@ def rs2(n):  # single pass, running statatistics version (Welford algorithm)
     var = S/(k-1)
     return M, var
 
-def rs3(n):  # single pass, running statatistics version (Welford's online algorithm, https://en.wikipedia.org/wiki/Algorithms_for_calculating_variance)
+def rs3(n):  # single pass, running statistics version (Welford's online algorithm, https://en.wikipedia.org/wiki/Algorithms_for_calculating_variance)
     i = 0
     M = 0.0
     S = 0.0
@@ -73,9 +73,9 @@ print('var1(), two-pass algorithm')
 print(var1(samples))
 print('var2(), alternative, two-pass algorithm, bad for large numbers with a small variance. try adjusting "offset" in the code.')
 print(var2(samples))
-print('rs1(), single pass, running statatistics version (Welford algorithm)')
+print('rs1(), single pass, running statistics version (Welford algorithm)')
 print(rs1(samples))
-print('rs2(), single pass, running statatistics version (Welford algorithm)')
+print('rs2(), single pass, running statistics version (Welford algorithm)')
 print(rs2(samples))
-print('rs3(), single pass, running statatistics version (Welford algorithm)')
+print('rs3(), single pass, running statistics version (Welford algorithm)')
 print(rs3(samples))
